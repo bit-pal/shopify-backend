@@ -40,6 +40,16 @@ app.get('/', (req, res) => {
   });
 });
 
+const corsOptions = {
+  origin: 'https://shopify-frontend-brown.vercel.app/', // specify trusted domain
+  methods: 'GET,POST',                       // allowed HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // allowed headers
+  credentials: true,                         // enable cookies/auth headers
+  optionsSuccessStatus: 200                  // some legacy browsers require this
+};
+
+app.use(cors(corsOptions));
+
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
