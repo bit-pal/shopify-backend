@@ -33,7 +33,18 @@ router.post('/register', async (req, res) => {
     });
 
     await user.save();
-
+    if (process.env.AUTO_SYNC_TEBRA === 'true') {
+      try {
+        const tebraData = await tebraService.createPatient(user);
+        user.tebraPatientId = tebraData.id;
+        user.tebraSyncStatus = 'synced';
+        await user.save();
+      } catch (error) {
+        console.error('Auto-sync to Tebra failed:', error);
+        user.tebraSyncStatus = 'failed';
+        await user.save();
+      }
+    }
     // Generate token
     const token = jwt.sign(
       { userId: user._id },

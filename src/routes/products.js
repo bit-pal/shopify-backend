@@ -6,6 +6,9 @@ const productController = require('../controllers/productController');
 // Get all appointments for a user (patient)
 router.get('/', productController.getProducts);
 
+// Get all orders
+router.get('/orders', productController.getOrders);
+
 // Get all appointments for a doctor
 router.get('/:id', productController.getProductById);
 
@@ -17,5 +20,6 @@ router.put('/:id', productController.updateProductStatus);
 
 // Cancel appointment
 router.delete('/:id', productController.deleteProduct);
+
 
 module.exports = router; 

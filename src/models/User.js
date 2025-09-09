@@ -37,6 +37,25 @@ const userSchema = new mongoose.Schema({
     type: String,
     sparse: true
   },
+  tebraPatientId: {
+    type: String,
+    sparse: true
+  },
+  tebraProviderId: {
+    type: String,
+    sparse: true
+  },
+  tebraSyncStatus: {
+    type: String,
+    enum: ['pending', 'synced', 'failed'],
+    default: 'pending'
+  },
+  tebraSyncDate: {
+    type: Date
+  },
+  tebraSyncError: {
+    type: String
+  },
   resetToken: {
     type: String
   }

@@ -31,7 +31,9 @@ app.use('/api/appointments', require('./routes/appointments'));
 app.use('/api/availability', require('./routes/availability'));
 app.use('/api/geolocation', require('./routes/geolocation'));
 app.use('/api/products', require('./routes/products'));
+app.use('/api/tebra', require('./routes/tebra'));
 app.use('/api/payment', require('./routes/payments'));
+app.use('/api/tebraUser', require('./routes/tebraUser'));
 // Base route
 app.get('/', (req, res) => {
   res.json({ 
